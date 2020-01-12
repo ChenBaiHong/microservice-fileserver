@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<div th:replace="~{fragments/header :: header}">...</div>
+	<div class="container">
+		<div class="row">
+			<!-- 自定义成功弹出框 -->
+			<div class="modal" id="bh-modal" th:if="${message}">
+				<h2>baiHoo 提示窗口</h2>
+				<div class="content">
+					<p th:text="${message}" />
+				</div>
+				<div class="actions">
+					<button class="toggle-button">知道了！</button>
+					&nbsp;
+				</div>
+			</div>
+			<!-- 弹出框展示文件 -->
+			<div th:replace="~{fragments/imgmodal :: imgmodal}">...</div>
+			
+			<!-- //自定义成功弹出框 -->
+			<div>
+				<form method="POST" class="bh-form" enctype="multipart/form-data" action="/">
+					<table>
+						<tr>
+							<td class="report-file"><span>上传文件</span> <input
+								tabindex="3" size="3" name="file" class="file-prew" type="file"
+								onchange="document.getElementById('textName').value=this.value">
+							</td>
+							<td><input type="text" id="textName"
+								style="height: 28px; border: 1px solid #f1f1f1"
+								readonly="readonly" /></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="submit" class="bh-button"
+									value="提交" style="width: 120px;" />
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<!-- 
+			<button class="toggle-button" id="centered-toggle-button">Toggle</button>
+			 -->
+			<h2>MongoDB 文件服务器列表</h2>
+			<div class="table-wrapper">
+				<div >
+					<form name="query_form" class="bh-form query-form" method="post" enctype="multipart/form-data" th:action="@{~/queryAction}">
+						<!-- 查询对象实体 -->
+						<input type="hidden" name="meCriteria._entity" value="com.baihoo.microservice.fileserver.domain.File"/>
+						<input type="hidden" name="pageIndex" th:value="${pageIndex}?${pageIndex}:''"/>
+						<input type="hidden" name="pageSize" th:value="${pageSize}?${pageIndex}:''"/>
+						<input type="hidden" id="totalPages" th:value="${page.totalPages}"/>
+						<table>
+							<tr>
+								<td width="25%"><span class="bh-span">文件名称</span></td>
+								<td width="25%">
+									<!-- 查询实体属性字段name, 条件 like  -->
+									<input type="hidden" name="meCriteria._expr[0]._property" value="name"/>
+									<input type="hidden" name="meCriteria._expr[0]._op" value="like"/>
+									<!-- 针对复杂类型回显取值，尤其事数组，去空处理 -->
+									<input type="text"  name="meCriteria._expr[0]._value"   
+									th:value="${meCriteria !=null && meCriteria._expr!=null && meCriteria._expr[0] !=null} ? ${meCriteria._expr[0]._value}:''" 
+									style="margin:auto;height: 28px; border: 1px solid #f1f1f1"/>
+								</td>
+								<td width="25%"><span class="bh-span">文件大小</span></td>
+								<td width="25%">
+									<!-- 查询实体属性字段size, 条件 between  -->
+									<input type="hidden" name="meCriteria._expr[1]._property" value="size">
+									<input type="hidden" name="meCriteria._expr[1]._op" value="between">
+					                <table style="border:0px;background-color:transparent" >
+					                  <tr style="border: 0px none ; background-color: transparent;">
+					                    <td style="border: 0px none ; background-color: transparent;">
+					                      从:
+					                    </td>
+					                    <td style="border: 0px none ; background-color: transparent;">
+					                    <!-- 针对复杂类型回显取值，尤其事数组，去空处理 -->
+					                     <input type="number" min="1"  step="1" name="meCriteria._expr[1]._min" 
+					                     th:value="${meCriteria !=null && meCriteria._expr!=null && meCriteria._expr[1] !=null} ? ${meCriteria._expr[1]._min}:''" 
+					                     style="margin:auto;height: 28px; border: 1px solid #f1f1f1"/>
+					                    </td>
+					                    <td style="border: 0px none ; background-color: transparent;">
+					                      到:
+					                    </td>
+					                    <td style="border: 0px none ; background-color: transparent;">
+					                    <!-- 针对复杂类型回显取值，尤其事数组，去空处理 -->
+					                      <input type="number" min="1"  step="1"  name="meCriteria._expr[1]._max" 
+					                       th:value="${meCriteria !=null && meCriteria._expr!=null && meCriteria._expr[1] !=null} ? ${meCriteria._expr[1]._max}:''" 
+					                      style="margin:auto;height: 28px; border: 1px solid #f1f1f1"/>
+					                    </td>
+					                  </tr>
+					                </table>
+								</td>
+							</tr>
+							<tr>
+								<td width="25%"><span class="bh-span">内容类型</span></td>
+								<td width="25%">
+									<!-- 查询实体属性字段contentType, 条件 like  -->
+									<input type="hidden" name="meCriteria._expr[2]._property" value="contentType"/>
+									<input type="hidden" name="meCriteria._expr[2]._op" value="like">
+									<!-- 针对复杂类型回显取值，尤其事数组，去空处理 -->
+									<input type="text" name="meCriteria._expr[2]._value" 
+									 th:value="${meCriteria !=null && meCriteria._expr!=null && meCriteria._expr[2] !=null} ? ${meCriteria._expr[2]._value}:''" 
+									style="margin:auto;height: 28px; border: 1px solid #f1f1f1"/>
+								</td>
+								<td width="25%"><span class="bh-span">上载日期</span></td>
+								<td width="25%">
+								<!-- 查询实体属性字段uploadDate, 条件 between  -->
+									<input type="hidden" name="meCriteria._expr[3]._property" value="uploadDate">
+									<input type="hidden" name="meCriteria._expr[3]._op" value="between">
+					                <table style="border:0px;background-color:transparent" >
+					                  <tr style="border: 0px none ; background-color: transparent;">
+					                    <td style="border: 0px none ; background-color: transparent;">
+					                      从:
+					                    </td>
+					                    <td style="border: 0px none ; background-color: transparent;">
+					                    <!-- 针对复杂类型回显取值，尤其事数组，去空处理 -->
+					                     <input type="text" class="datetimepicker" name="meCriteria._expr[3]._min" 
+					                      th:value="${meCriteria !=null && meCriteria._expr!=null && meCriteria._expr[3] !=null} ? ${meCriteria._expr[3]._min}:''" 
+					                     style="margin:auto;height: 28px; border: 1px solid #f1f1f1"/>
+					                    </td>
+					                    <td style="border: 0px none ; background-color: transparent;">
+					                      到:
+					                    </td>
+					                    <td style="border: 0px none ; background-color: transparent;">
+					                    <!-- 针对复杂类型回显取值，尤其事数组，去空处理 -->
+					                      <input type="text" class="datetimepicker"  name="meCriteria._expr[3]._max" 
+					                       th:value="${meCriteria !=null && meCriteria._expr!=null && meCriteria._expr[3] !=null} ? ${meCriteria._expr[3]._max}:''" 
+					                      style="margin:auto;height: 28px; border: 1px solid #f1f1f1"/>
+					                    </td>
+					                  </tr>
+					                </table>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4">
+									<hr>
+									<div style="width: 220px;position: relative;margin: auto">
+										<input type="button" class="bh-button queryButton"
+											value="查詢" style="width: 100px;" />
+																				&nbsp;&nbsp;
+										<input type="button" class="bh-button restButton"
+											value="重置" style="width: 100px;" />
+									</div>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+				<table class="fl-table">
+					<thead>
+						<tr>
+							<th>文件名称</th>
+							<th>文件ID</th>
+							<th>内容类型</th>
+							<th>文件大小</th>
+							<th>上载日期</th>
+							<th>MD5</th>
+							<th>图片操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${files.size()} eq 0">
+							<td colspan="3">没有文件信息！！</td>
+						</tr>
+						<tr th:each="file : ${files}">
+							<td><a th:href="'files/'+${file.id}" th:text="${file.name}" /></td>
+							<td th:text="${file.id}"></td>
+							<td th:text="${file.contentType}"></td>
+							<td th:text="${file.size}"></td>
+							<td th:text="${#dates.format(file.uploadDate, 'yyyy-MM-dd HH:mm')}"></td><!--  thymeleaf 日期格式化 -->
+							<td th:text="${file.md5}"></td>
+							<td>
+								<a class="blog-view-file point" role="button" style="cursor: pointer;"
+								 data-th-attr="fileId=${file.id}" title="查看图片"> 
+								 <i class="icon-eye-open" aria-hidden="true"></i>
+								</a>/
+								<a class="blog-delete-file" role="button" style="cursor: pointer;"
+								 data-th-attr="fileId=${file.id}"  title="删除图片"> 
+								 <i class="icon-remove" aria-hidden="true"></i>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="7">
+								<div th:replace="~{fragments/page :: page}">...</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>			
+		</div>
+	</div>
+	<div th:replace="~{fragments/footer :: footer}">...</div>
+</body>
+</html>

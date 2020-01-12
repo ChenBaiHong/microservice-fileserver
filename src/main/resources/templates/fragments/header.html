@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	data-th-fragment="header">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- 
+    CSRF
+	<meta name="_csrf" th:content="${_csrf.token}"/>
+	default header name is X-CSRF-TOKEN
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+	 -->
+<link rel="stylesheet"
+	href="../../static/html/bootstrap/css/bootstrap.min.css"
+	th:href="@{/html/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="../../static/html/bootstrap/css/bootstrap-responsive.min.css"
+	th:href="@{/html/bootstrap/css/bootstrap-responsive.min.css}" />
+<link
+	href="../../static/html/bootstrap/css/bootstrap-datetimepicker.min.css"
+	th:href="@{/html/bootstrap/css/bootstrap-datetimepicker.min.css}"
+	rel="stylesheet" media="screen">
+	<!-- =================================个人的CSS文件================================= -->
+<link
+	href="../../static/html/assets/css/main.css"
+	th:href="@{/html/assets/css/main.css}"
+	rel="stylesheet" media="screen">
+<link
+	href="../../static/html/assets/css/header.css"
+	th:href="@{/html/assets/css/header.css}"
+	rel="stylesheet" media="screen">	
+<link
+	href="../../static/html/assets/css/page.css"
+	th:href="@{/html/assets/css/page.css}"
+	rel="stylesheet" media="screen">	
+<link
+	href="../../static/html/assets/css/imgmodal.css"
+	th:href="@{/html/assets/css/imgmodal.css}"
+	rel="stylesheet" media="screen">		
+	
+<title>MongoDB 文件服务器</title>
+</head>
+<body>
+	<nav class="m-nav m-nav-flex-y m-nav-bg" style="">
+		<div class="m-nav-middle">
+			<ul class="m-nav-flex-space">
+				<a href="https://www.mongodb.com" class="m-nav-flex-y"><li
+					class="m-nav-logo"><img
+						src="https://webassets.mongodb.com/_com_assets/global/mongodb-logo-white.png"></li>
+				<li class="m-nav-tagline">文件服务器</li></a>
+				<div class="m-nav-middle-lists m-nav-flex-xy" style="">
+					<li class="m-nav-middle-li "><a href="/products/overview">首页</a></li>
+					<li class="m-nav-middle-li "><a href="/cloud">Cloud</a></li>
+					<li class="m-nav-middle-li "><a href="/company">About Baihoo</a></li>
+				</div>
+			</ul>
+		</div>
+	</nav>
+</body>
+</html>

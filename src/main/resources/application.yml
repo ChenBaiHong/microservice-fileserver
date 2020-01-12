@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: prod
+# tomcat 性能调优
+# jar 方式启动调优
+# java -jar -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m -Xms2048m -Xmx2048m -Xmn256m -Xss256k -XX:SurvivorRatio=8 -XX:+UseConcMarkSweepGC microservice-fileserver-pro.jar
+server:
+  tomcat:
+    max-threads: 20
+    max-connections: 30
+    max-http-post-size: '20MB'
+    max-swallow-size: '30MB'
+    min-spare-threads: 20
+    max-http-header-size: '10MB'

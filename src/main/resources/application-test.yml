@@ -1,0 +1,35 @@
+#server 上下文路径
+server: 
+  port: 8083
+  address: 10.15.2.11
+#配置thymeleaf
+spring:
+  thymeleaf:
+    encoding:  UTF-8
+    cache: false
+    mode: HTML5
+  # 设置静态文件路径，js,css等
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/static/,classpath:/public/,classpath:/META-INF/resources/,classpath:/page/
+#分割文件上载大小
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+  # 自定义独立配置 MongoDB 服务
+  data:
+    mongodb:
+      host: 10.15.2.11
+      port: 27017
+      database: fileserver
+      username: fileserver
+      password: fileserver54188
+      uri: mongodb://admin:fileserver54188@10.15.2.11:27017/fileserver
+      authentication-database: fileserver
+# 文件上载域名
+file:
+  upload:
+    domain: "https://www.jklz.online/lgyyfile"

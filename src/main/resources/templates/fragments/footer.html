@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<footer
+		style="background-color: rgb(26, 26, 26); color: rgb(255, 255, 255);"
+		class="p-v-10 w-full" data-th-fragment="footer">
+		<div class="w-max-1200 w-full m-auto">
+			<div class="m-auto"
+				style="border-bottom: 1px solid white; width: calc(100% - 40px);"></div>
+			<div class="m-h-20 m-v-10 fl fl-wrap fl-justify-between">
+				<div>
+					<div class="w-max-80"></div>
+					<span class="hide-lt-910"><div
+							class="w-max-600 fl fl-center-y">
+							<svg height="45px" x="0px" y="0px" viewBox="0 0 298 663.3"
+								style="enable-background: new 0 0 298 663.3;">
+								<g>
+								<g transform="translate(-957.000000, -316.000000)">
+								<g transform="translate(273.000000, 168.000000)">
+								<g transform="translate(614.000000, 134.000000)">
+								<g transform="translate(70.000000, 14.000000)">
+								<path fill="#13AA52"
+									d="M292.5,264C257.6,109.9,175,59.2,166.1,39.8c-9.8-13.7-19.6-37.9-19.6-37.9 c-0.2-0.4-0.4-1.1-0.7-1.8c-1,13.6-1.5,18.9-14.4,32.7c-20,15.6-122.7,101.8-131,277c-7.8,163.3,118,260.7,135.1,273.1l1.9,1.4 c4.9-11.2,9.8-43.1,13.2-86.8c0.8,35.3,5.8,73.1,23.3,81.1l1-0.7c2.8-1.9,10.9-7.8,21.7-17.8 C239.3,520.7,319.8,423.4,292.5,264z"></path>
+								<path fill="#ABABAB"
+									d="M150.7,497.3c-3.4,43.7-8.4,75.5-13.2,86.7c0,0,5.4,38.5,9.1,79.3l13.3,0 c4.9-45.7,14.1-84.9,14.1-84.9C156.5,570.4,151.4,532.6,150.7,497.3z"></path>
+								<path fill="#13AA52"
+									d="M292.5,264C257.6,109.9,175,59.2,166.1,39.8c-9.8-13.7-19.6-37.9-19.6-37.9 c8.3,32.3,6.9,290.1,7.8,321c2,64.6,0,126.6-3.8,174.5c0.8,35.3,5.8,73.1,23.3,81.1l1-0.7c2.8-1.9,10.9-7.8,21.7-17.8l0.8-0.7 C239.3,520.7,319.8,423.4,292.5,264z"></path>
+								<linearGradient id="Shape_1_" gradientUnits="userSpaceOnUse"
+									x1="-232.3255" y1="2195.9507" x2="-232.3255" y2="2194.9333"
+									gradientTransform="matrix(68.2258 0 0 -259.7151 16072.8818 570323.5)">
+								<stop offset="0" style="stop-color:#13AA52;stop-opacity:0"></stop>
+								<stop offset="1" style="stop-color:#116149;stop-opacity:0.2"></stop></linearGradient>
+								<path fill="url(#Shape_1_)"
+									d="M292.5,264C257.6,109.9,175,59.2,166.1,39.8c-9.8-13.7-19.6-37.9-19.6-37.9 c8.3,32.3,6.9,290.1,7.8,321c2,64.6,0,126.6-3.8,174.5c0.8,35.3,5.8,73.1,23.3,81.1l1-0.7c2.8-1.9,10.9-7.8,21.7-17.8l0.8-0.7 C239.3,520.7,319.8,423.4,292.5,264z"></path></g></g></g></g></g></svg>
+							<small class="m-l-10">© 2018 MongoDB, Inc.<br>Powered
+								by,<a href="https://baihoo.com">baihoo.com</a>
+							</small>
+						</div></span>
+				</div>
+			</div>
+		</div>
+		<!-- =================================js文件================================= -->
+		<script src="../../static/html/jQuery/jquery3.2.1.min.js"
+			th:src="@{/html/jQuery/jquery3.2.1.min.js}"></script>
+		<script src="../../static/html/bootstrap/js/bootstrap.min.js"
+			th:src="@{/html/bootstrap/js/bootstrap.min.js}"></script>
+		<script type="text/javascript"
+			src="../../static/html/bootstrap/js/bootstrap-datetimepicker.js"
+			th:src="@{/html/bootstrap/js/bootstrap-datetimepicker.js}"
+			charset="UTF-8"></script>
+		<script type="text/javascript"
+			src="../../static/html/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js"
+			th:src="@{/html/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js}"
+			charset="UTF-8"></script>
+		<!-- =================================个人的JS文件================================= -->
+		<script type="text/javascript"
+			src="../../static/html/assets/js/main.js"
+			th:src="@{/html/assets/js/main.js}" charset="UTF-8"></script>
+		<script type="text/javascript"
+			src="../../static/html/assets/js/imgmodal.js"
+			th:src="@{/html/assets/js/imgmodal.js}" charset="UTF-8"></script>
+			
+		<script type="text/javascript">
+			var buttons = document.querySelectorAll(".toggle-button");
+			var modal = document.querySelector("#bh-modal");
+			[].forEach.call(buttons, function(button) {
+				button.addEventListener("click", function() {
+					modal.classList.toggle("off");
+				})
+			});
+			$('.datetimepicker').datetimepicker({
+				language: 'zh-CN',
+			    format: 'yyyy-mm-dd hh:ii'
+			});
+		</script>
+	</footer>
+</body>
+</html>
